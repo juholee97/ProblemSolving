@@ -1,4 +1,5 @@
 #include <string>
+#include <variant>
 #include <gtest/gtest.h>
 #include "Test_GoogleTest.hpp"
 
@@ -46,5 +47,32 @@ TEST_F( ProblemSolving_Test, BAEKJOON_2839 )
 		}
 
 		EXPECT_EQ( result, input_data.second );
+	}
+}
+
+// BAEKJOON PS : 16496
+struct InputData_16496
+{
+	std::vector<int32_t> inputdatas;
+	std::string result;
+};
+
+TEST_F( ProblemSolving_Test, BAEKJOON_16496 )
+{
+	std::vector<InputData_16496> datas;
+
+	datas.push_back( { {323, 323343}, "323343323" } );
+	datas.push_back( { {343, 343323}, "343343323" } );
+	datas.push_back( { {1, 0}, "10" } );
+	datas.push_back( { {0, 0, 0}, "0" } );
+
+	
+
+	for ( auto data : datas )
+	{
+		mCPS_16496.get()->Init();
+		std::string result = mCPS_16496.get()->Execute( data.inputdatas );
+
+		EXPECT_EQ( result, data.result );
 	}
 }
